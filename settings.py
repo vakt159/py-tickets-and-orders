@@ -14,7 +14,7 @@ DATABASES = {
         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
-AUTH_USER_MODEL="db.User"
+AUTH_USER_MODEL = "db.User"
 
 LANGUAGE_CODE = "en-us"
 
