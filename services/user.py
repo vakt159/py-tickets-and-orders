@@ -9,15 +9,18 @@ def create_user(username: str,
                 first_name: str = None,
                 last_name: str = None,
                 ) -> None:
-    user = get_user_model().objects.create_user(username=username,
-                                                password=password)
-    if email:
-        user.email = email
-    if first_name:
-        user.first_name = first_name
-    if last_name:
-        user.last_name = last_name
-    user.save()
+    data = {
+        "username": username,
+        "password": password,
+    }
+    if email is not None:
+        data["email"] = email
+    if first_name is not None:
+        data["first_name"] = first_name
+    if last_name is not None:
+        data["last_name"] = last_name
+
+    get_user_model().objects.create_user(**data)
 
 
 def get_user(user_id: int) -> User:
